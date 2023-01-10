@@ -7,7 +7,16 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Deploy
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 11
+          cache: 'maven'
+      - name: Build docs
+        uses: gradle/gradle-build-action@v2
+        run: ./gradlew dokkaHtml dokkaHtmlMultiModule
+      - name: Deploy to Github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
