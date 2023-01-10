@@ -13,8 +13,8 @@ jobs:
           distribution: 'zulu'
           java-version: 11
           cache: 'maven'
+      - uses: gradle/gradle-build-action@v2
       - name: Build docs
-        uses: gradle/gradle-build-action@v2
         run: ./gradlew dokkaHtml dokkaHtmlMultiModule
       - name: Deploy to Github pages
         uses: peaceiris/actions-gh-pages@v3
