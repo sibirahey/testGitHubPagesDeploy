@@ -4,6 +4,8 @@ on: [ push ]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
